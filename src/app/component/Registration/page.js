@@ -1,7 +1,7 @@
 "use client"; // ✅ Make this a client component
 
 import { useState } from "react";
-import api from "../axios/page"; // ✅ path project ke hisaab se adjust kare
+ // ✅ path project ke hisaab se adjust kare
 import { useRouter } from "next/navigation"; // ✅ next/router ki jagah
 import Link from "next/link";
 

@@ -1,7 +1,7 @@
 "use client"; // ✅ Ye line batati hai ki ye client component hai
 
 import { useState } from "react";
-import api from "../axios/page";
+
 import { useRouter } from "next/navigation"; // ✅ next/router ki jagah
 import Link from "next/link";
 
