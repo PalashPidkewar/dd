@@ -1,13 +1,376 @@
+// "use client";
+
+// import { useState, useEffect, useRef } from "react";
+// import Image from "next/image";
+// import Link from "next/link";
+// import { HiBars3CenterLeft } from "react-icons/hi2";
+// import { CiLogin } from "react-icons/ci";
+// import {
+//   FaInstagram,
+//   FaBars,
+//   FaTimes,
+//   FaPhoneAlt,
+//   FaFacebook,
+//   FaLinkedin,
+//   FaRoad,
+//   FaEnvelope,
+// } from "react-icons/fa";
+// import { MdOutlineWarehouse } from "react-icons/md";
+// import { RiHotelLine } from "react-icons/ri";
+// import { GiCrystalBars } from "react-icons/gi";
+// import { SiInteractiondesignfoundation } from "react-icons/si";
+// import { TbGridDots } from "react-icons/tb";
+// import { GiDeliveryDrone } from "react-icons/gi";
+// export default function Navbar() {
+//   const [menuOpen, setMenuOpen] = useState(false);
+//   const [showTopBar, setShowTopBar] = useState(true);
+//   const [lastScrollY, setLastScrollY] = useState(0);
+//   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+//   const dropdownRef = useRef(null);
+
+//   // Scroll behavior for top social bar
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       const currentScrollY = window.scrollY;
+//       if (Math.abs(currentScrollY - lastScrollY) > 10) {
+//         setShowTopBar(currentScrollY < lastScrollY || currentScrollY < 50);
+//         setLastScrollY(currentScrollY);
+//       }
+//     };
+//     window.addEventListener("scroll", handleScroll);
+//     return () => window.removeEventListener("scroll", handleScroll);
+//   }, [lastScrollY]);
+
+
+//   const handleLinkClick = () => {
+//     setMenuOpen(false); // menu close on link click
+//   };
+
+//   return (
+//     <div className="sticky top-0 z-50">
+//       {/* Top Social Bar */}
+//       {showTopBar && (
+//         <div className="bg-gray-100 w-full py-0 px-4 flex items-center text-gray-600 text-sm md:text-base transition-transform duration-300">
+//           {/* Left - Company Name */}
+//         {/* Left - Company Name */}
+// <div className="hidden sm:block text-base font-medium whitespace-nowrap">
+//   Prakash Asphaltings and Toll Highways (INDIA) Ltd.
+// </div>
+
+// {/* Center - Contact Info */}
+// <div className="flex items-center gap-4 font-medium whitespace-nowrap sm:justify-center justify-start w-full">
+//   <span className="flex items-center gap-1 text-sm sm:text-base">
+//     <FaPhoneAlt className="text-green-500" /> +91-7324-350100
+//   </span>
+//   <span className="hidden sm:inline">|</span>
+//   <span className="hidden sm:flex items-center gap-1 text-sm sm:text-base">
+//     <FaEnvelope className="text-yellow-400" /> info@pathindia.com
+//   </span>
+// </div>
+
+//           {/* Right - Social Icons + Dropdown */}
+//           <div className="flex items-center space-x-3 sm:space-x-4">
+//             <a
+//               href="https://www.linkedin.com/company/path-india-ltd-/?originalSubdomain=in"
+//               target="_blank"
+//               rel="noopener noreferrer"
+//               className="text-blue-700 hover:animate-bounce transition"
+//             >
+//               <FaLinkedin size={15} />
+//             </a>
+//             <a
+//               href="https://www.instagram.com/path_india/?hl=en"
+//               target="_blank"
+//               rel="noopener noreferrer"
+//               className="text-pink-600 hover:animate-bounce transition"
+//             >
+//               <FaInstagram size={15} />
+//             </a>
+//             <a
+//               href="https://www.facebook.com/pathltd/"
+//               target="_blank"
+//               rel="noopener noreferrer"
+//               className="text-blue-600 hover:anFaBarsimate-bounce transition"
+//             >
+//               <FaFacebook size={15} />
+//             </a>
+
+//             {/* Dropdown */}
+//             <div
+//               ref={dropdownRef}
+//               className="relative"
+//               onMouseEnter={() => setIsDropdownOpen(true)}
+//               onMouseLeave={() => setIsDropdownOpen(false)}
+//             >
+//               <button
+//                 className="text-gray-700 hover:text-black transition focus:outline-none mt-1"
+//                 onClick={() => setIsDropdownOpen((prev) => !prev)}
+//               >
+//                 <TbGridDots size={15} />
+//               </button>
+
+//               {isDropdownOpen && (
+//                 <div className="absolute right-0 mt-2 w-44 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+//                   <ul className="py-1 text-sm text-gray-700">
+//                     {[
+//                       {
+//                         name: "Path Highway",
+//                         link: "#",
+//                         icon: <FaRoad className="inline mr-2 text-blue-500" />,
+//                       },
+//                       {
+//                         name: "Path Logistic",
+//                         link: "#",
+//                         icon: <MdOutlineWarehouse className="inline mr-2 text-green-500" />,
+//                       },
+//                       {
+//                         name: "Path Recharge",
+//                         link: "#",
+//                         icon: <RiHotelLine className="inline mr-2 text-purple-500" />,
+//                       },
+//                       {
+//                         name: "Path Crushbarrier",
+//                         link: "#",
+//                         icon: <FaRoad className="inline mr-2 text-red-500" />,
+//                       },
+//                       {
+//                         name: "Path GFRP",
+//                         link: "#",
+//                         icon: <GiCrystalBars className="inline mr-2 text-yellow-500" />,
+//                       },
+//                       {
+//                         name:"Path Dynamics",
+//                         link:"#",
+//                         icon: <GiDeliveryDrone className="inline mr-2 text-green-500"/>
+                      
+//                       },
+//                       {
+//                         name: "Path Foundation",
+//                         link: "#",
+//                         icon: (
+//                           <SiInteractiondesignfoundation className="inline mr-2 text-indigo-500" />
+//                         ),
+//                       },
+//                     ].map((item) => (
+//                       <li key={item.name}>
+//                         <a
+//                           href={item.link}
+//                           className="flex items-center px-4 py-2 hover:bg-gray-100"
+//                         >
+//                           {item.icon} {item.name}
+//                         </a>
+//                       </li>
+//                     ))}
+//                   </ul>
+//                 </div>
+//               )}
+//             </div>
+//           </div>
+//         </div>
+//       )}
+
+//       {/* Main Navbar */}
+//       <nav className="bg-white shadow-md sticky top-0 z-40">
+//         <div className="mx-auto px-4">
+//           <div className="flex justify-between items-center h-14">
+//             {/* Logo */}
+      
+// <div className="flex-shrink-0">
+  // <Link href="/component/pathHome">
+  //   <Image
+  //     src="/CompanyLogo/companylogo.png"
+  //     alt="Company Logo"
+  //     width={180}
+  //     height={48}
+  //     className="w-auto h-12 object-contain"
+  //   />
+//   </Link>
+// </div>
+
+//             {/* Desktop Menu */}
+//             <div className="hidden md:flex space-x-4 items-center">
+//                 <Link href="/component/pathHome" className="group relative flex items-center">
+//     {/* Hover Image */}
+//     <img
+//       src="/Footerimg/smalllogo.png"
+//       alt="icon"
+//       className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+//     />
+//     <span className="ml-5 hover:text-blue-500 text-sm">Home</span>
+//   </Link>
+//               <Link href="/component/About" className="group relative flex items-center">
+//               <img
+//       src="/Footerimg/smalllogo.png"
+//       alt="icon"
+//       className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+//     />
+//     <span className="ml-5 hover:text-blue-500 text-sm">About Us</span>
+              
+//               </Link>
+//               <Link href="/component/PathGroup" className="group relative flex items-center">
+//               <img
+//       src="/Footerimg/smalllogo.png"
+//       alt="icon"
+//       className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+//     />
+//       <span className="ml-5 hover:text-blue-500 text-sm">Path Group</span>
+     
+//               </Link>
+//               <Link href="/component/MMLP" className="group relative flex items-center">
+//               <img
+//       src="/Footerimg/smalllogo.png"
+//       alt="icon"
+//       className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+//     />
+//       <span className="ml-5 hover:text-blue-500 text-sm">MMLP</span>
+              
+//               </Link>
+//               <Link href="/component/Solution" className="group relative flex items-center">
+//               <img
+//       src="/Footerimg/smalllogo.png"
+//       alt="icon"
+//       className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+//     />
+//       <span className="ml-5 hover:text-blue-500 text-sm"> Solution (Facility)</span>
+             
+//               </Link>
+//               <Link
+//                 href="/component/Sustainability"
+//                 className="group relative flex items-center"
+//               >
+//                 <img
+//       src="/Footerimg/smalllogo.png"
+//       alt="icon"
+//       className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+//     />
+//       <span className="ml-5 hover:text-blue-500 text-sm">   Sustainability</span>
+                
+//               </Link>
+//              {/* What's New Dropdown (Desktop) */}
+//               <div className="relative group">
+//                  <img
+//       src="/Footerimg/smalllogo.png"
+//       alt="icon"
+//       className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+//     />
+//                 <button className="ml-5 text-sm hover:text-blue-500 flex items-center focus:outline-none">
+//                   What's New ▼
+//                 </button>
+//                 <div className="absolute left-0 mt-1 w-32 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-all duration-300 z-50">
+//                   <Link
+//                     href="#update"
+//                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+//                   >
+//                     Update
+//                   </Link>
+//                   <Link
+//                     href="#blog"
+//                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+//                   >
+//                     Blog
+//                   </Link>
+//                     <Link
+//                     href="/component/ESocialresponsibity"
+//                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+//                   >
+//                     ESW
+//                   </Link>
+//                 </div>
+//               </div>
+//               <Link href="/component/Contact" className="group relative flex items-center">
+//               <img
+//       src="/Footerimg/smalllogo.png"
+//       alt="icon"
+//       className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+//     />
+//       <span className="ml-5 hover:text-blue-500 text-sm"> Contact</span>
+               
+//               </Link>
+//             </div>
+
+//             {/* Mobile Menu Button */}
+//             <div className="md:hidden flex items-center">
+//               <button onClick={() => setMenuOpen(!menuOpen)}>
+//                 {menuOpen ? <FaTimes size={24} /> : <HiBars3CenterLeft size={24} />}
+//               </button>
+//             </div>
+//           </div>
+//         </div>
+
+//         {/* Mobile Menu */}
+//         {menuOpen && (
+//           <div className="md:hidden bg-white px-4 pb-4">
+//             <Link href="/component/pathHome" className="block py-2"  onClick={handleLinkClick}>
+//               Home
+//             </Link>
+//             <Link href="/component/PathGroup" className="block py-2"  onClick={handleLinkClick}>
+//               Path Group
+//             </Link>
+//             <Link href="/component/MMLP" className="block py-2"  onClick={handleLinkClick}>
+//               MMLP
+//             </Link>
+//             <Link href="/component/About" className="block py-2"  onClick={handleLinkClick}>
+//               About Us
+//             </Link>
+//             <Link href="/component/Solution" className="block py-2"  onClick={handleLinkClick}>
+//               Solution (Facility)
+//             </Link>
+//              <Link href="/component/Sustainability" className="block py-2"  onClick={handleLinkClick}>
+//               Sustainability
+//             </Link>
+//             <Link href="#" className="block py-2"  onClick={handleLinkClick}>
+//              What's New
+//             </Link>
+//             <Link href="/component/Contact" className="block py-2"  onClick={handleLinkClick}>
+//               Contact
+//             </Link>
+//              <Link href="/component/ESocialresponsibity" className="block py-2"  onClick={handleLinkClick}>
+//              ESW
+//             </Link>
+           
+
+// <div className="flex items-center w-full -mt-6">
+//   {/* Left line */}
+//   <div className="flex-1 h-[2px] bg-gray-300"></div>
+
+//   {/* Center logo */}
+//   <div className="mx-6">
+//     <img
+//       src="/CompanyLogo/companylogo.png"
+//       alt="Company Logo"
+//       className="h-20 w-20 object-contain"
+//     />
+//   </div>
+
+//   {/* Right line */}
+//   <div className="flex-1 h-[2px] bg-gray-300"></div>
+// </div>
+
+
+
+// <Link
+//   href="/component/Login"
+//   onClick={handleLinkClick}
+//   className="flex items-center gap-2 -mt-5 text-blue-500"
+// >
+//   Login
+//   <CiLogin className="text-red-500 text-xl" />
+// </Link>
+
+//           </div>
+//         )}
+//       </nav>
+//     </div>
+//   );
+// }
+
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import { HiBars3CenterLeft } from "react-icons/hi2";
 import { CiLogin } from "react-icons/ci";
 import {
   FaInstagram,
-  FaBars,
   FaTimes,
   FaPhoneAlt,
   FaFacebook,
@@ -17,10 +380,11 @@ import {
 } from "react-icons/fa";
 import { MdOutlineWarehouse } from "react-icons/md";
 import { RiHotelLine } from "react-icons/ri";
-import { GiCrystalBars } from "react-icons/gi";
+import { GiCrystalBars, GiDeliveryDrone } from "react-icons/gi";
 import { SiInteractiondesignfoundation } from "react-icons/si";
 import { TbGridDots } from "react-icons/tb";
-import { GiDeliveryDrone } from "react-icons/gi";
+import Link from "next/link";
+import Image from "next/image";
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showTopBar, setShowTopBar] = useState(true);
@@ -41,32 +405,33 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-
   const handleLinkClick = () => {
-    setMenuOpen(false); // menu close on link click
+    setMenuOpen(false);
   };
 
   return (
     <div className="sticky top-0 z-50">
-      {/* Top Social Bar */}
-      {showTopBar && (
-        <div className="bg-gray-100 w-full py-0 px-4 flex items-center text-gray-600 text-sm md:text-base transition-transform duration-300">
+      {/* Top Social Bar - Fixed height container */}
+      <div 
+        className="bg-gray-100 w-full overflow-hidden transition-all duration-300"
+        style={{ height: showTopBar ? '40px' : '0px' }}
+      >
+        <div className="h-10 px-4 flex items-center text-gray-600 text-sm md:text-base">
           {/* Left - Company Name */}
-        {/* Left - Company Name */}
-<div className="hidden sm:block text-base font-medium whitespace-nowrap">
-  Prakash Asphaltings and Toll Highways (INDIA) Ltd.
-</div>
+          <div className="hidden sm:block text-base font-medium whitespace-nowrap">
+            Prakash Asphaltings and Toll Highways (INDIA) Ltd.
+          </div>
 
-{/* Center - Contact Info */}
-<div className="flex items-center gap-4 font-medium whitespace-nowrap sm:justify-center justify-start w-full">
-  <span className="flex items-center gap-1 text-sm sm:text-base">
-    <FaPhoneAlt className="text-green-500" /> +91-7324-350100
-  </span>
-  <span className="hidden sm:inline">|</span>
-  <span className="hidden sm:flex items-center gap-1 text-sm sm:text-base">
-    <FaEnvelope className="text-yellow-400" /> info@pathindia.com
-  </span>
-</div>
+          {/* Center - Contact Info */}
+          <div className="flex items-center gap-4 font-medium whitespace-nowrap sm:justify-center justify-start w-full">
+            <span className="flex items-center gap-1 text-sm sm:text-base">
+              <FaPhoneAlt className="text-green-500" /> +91-7324-350100
+            </span>
+            <span className="hidden sm:inline">|</span>
+            <span className="hidden sm:flex items-center gap-1 text-sm sm:text-base">
+              <FaEnvelope className="text-yellow-400" /> info@pathindia.com
+            </span>
+          </div>
 
           {/* Right - Social Icons + Dropdown */}
           <div className="flex items-center space-x-3 sm:space-x-4">
@@ -90,7 +455,7 @@ export default function Navbar() {
               href="https://www.facebook.com/pathltd/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:anFaBarsimate-bounce transition"
+              className="text-blue-600 hover:animate-bounce transition"
             >
               <FaFacebook size={15} />
             </a>
@@ -139,17 +504,14 @@ export default function Navbar() {
                         icon: <GiCrystalBars className="inline mr-2 text-yellow-500" />,
                       },
                       {
-                        name:"Path Dynamics",
-                        link:"#",
-                        icon: <GiDeliveryDrone className="inline mr-2 text-green-500"/>
-                      
+                        name: "Path Dynamics",
+                        link: "#",
+                        icon: <GiDeliveryDrone className="inline mr-2 text-green-500" />
                       },
                       {
                         name: "Path Foundation",
                         link: "#",
-                        icon: (
-                          <SiInteractiondesignfoundation className="inline mr-2 text-indigo-500" />
-                        ),
+                        icon: <SiInteractiondesignfoundation className="inline mr-2 text-indigo-500" />
                       },
                     ].map((item) => (
                       <li key={item.name}>
@@ -167,16 +529,15 @@ export default function Navbar() {
             </div>
           </div>
         </div>
-      )}
+      </div>
 
       {/* Main Navbar */}
-      <nav className="bg-white shadow-md sticky top-0 z-40">
+      <nav className="bg-white shadow-md">
         <div className="mx-auto px-4">
           <div className="flex justify-between items-center h-14">
             {/* Logo */}
-      
-<div className="flex-shrink-0">
-  <Link href="/component/pathHome">
+            <div className="flex-shrink-0">
+            <Link href="/component/pathHome">
     <Image
       src="/CompanyLogo/companylogo.png"
       alt="Company Logo"
@@ -184,108 +545,91 @@ export default function Navbar() {
       height={48}
       className="w-auto h-12 object-contain"
     />
-  </Link>
-</div>
+     </Link>
+            </div>
 
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-4 items-center">
-                <Link href="/component/pathHome" className="group relative flex items-center">
-    {/* Hover Image */}
-    <img
-      src="/Footerimg/smalllogo.png"
-      alt="icon"
-      className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-    />
-    <span className="ml-5 hover:text-blue-500 text-sm">Home</span>
-  </Link>
-              <Link href="/component/About" className="group relative flex items-center">
-              <img
-      src="/Footerimg/smalllogo.png"
-      alt="icon"
-      className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-    />
-    <span className="ml-5 hover:text-blue-500 text-sm">About Us</span>
-              
-              </Link>
-              <Link href="/component/PathGroup" className="group relative flex items-center">
-              <img
-      src="/Footerimg/smalllogo.png"
-      alt="icon"
-      className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-    />
-      <span className="ml-5 hover:text-blue-500 text-sm">Path Group</span>
-     
-              </Link>
-              <Link href="/component/MMLP" className="group relative flex items-center">
-              <img
-      src="/Footerimg/smalllogo.png"
-      alt="icon"
-      className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-    />
-      <span className="ml-5 hover:text-blue-500 text-sm">MMLP</span>
-              
-              </Link>
-              <Link href="/component/Solution" className="group relative flex items-center">
-              <img
-      src="/Footerimg/smalllogo.png"
-      alt="icon"
-      className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-    />
-      <span className="ml-5 hover:text-blue-500 text-sm"> Solution (Facility)</span>
-             
-              </Link>
-              <Link
-                href="/component/Sustainability"
-                className="group relative flex items-center"
-              >
+              <a href="/component/pathHome" className="group relative flex items-center">
                 <img
-      src="/Footerimg/smalllogo.png"
-      alt="icon"
-      className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-    />
-      <span className="ml-5 hover:text-blue-500 text-sm">   Sustainability</span>
-                
-              </Link>
-             {/* What's New Dropdown (Desktop) */}
+                  src="/api/placeholder/16/16"
+                  alt="icon"
+                  className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                />
+                <span className="ml-5 hover:text-blue-500 text-sm">Home</span>
+              </a>
+              <a href="/component/About" className="group relative flex items-center">
+                <img
+                  src="/api/placeholder/16/16"
+                  alt="icon"
+                  className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                />
+                <span className="ml-5 hover:text-blue-500 text-sm">About Us</span>
+              </a>
+              <a href="/component/PathGroup" className="group relative flex items-center">
+                <img
+                  src="/api/placeholder/16/16"
+                  alt="icon"
+                  className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                />
+                <span className="ml-5 hover:text-blue-500 text-sm">Path Group</span>
+              </a>
+              <a href="/component/MMLP" className="group relative flex items-center">
+                <img
+                  src="/api/placeholder/16/16"
+                  alt="icon"
+                  className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                />
+                <span className="ml-5 hover:text-blue-500 text-sm">MMLP</span>
+              </a>
+              <a href="/component/Solution" className="group relative flex items-center">
+                <img
+                  src="/api/placeholder/16/16"
+                  alt="icon"
+                  className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                />
+                <span className="ml-5 hover:text-blue-500 text-sm">Solution (Facility)</span>
+              </a>
+              <a href="/component/Sustainability" className="group relative flex items-center">
+                <img
+                  src="/api/placeholder/16/16"
+                  alt="icon"
+                  className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                />
+                <span className="ml-5 hover:text-blue-500 text-sm">Sustainability</span>
+              </a>
+
+              {/* What's New Dropdown */}
               <div className="relative group">
-                 <img
-      src="/Footerimg/smalllogo.png"
-      alt="icon"
-      className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-    />
+                <img
+                  src="/api/placeholder/16/16"
+                  alt="icon"
+                  className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                />
                 <button className="ml-5 text-sm hover:text-blue-500 flex items-center focus:outline-none">
                   What's New ▼
                 </button>
                 <div className="absolute left-0 mt-1 w-32 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-all duration-300 z-50">
-                  <Link
-                    href="#update"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
+                  <a href="#update" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     Update
-                  </Link>
-                  <Link
-                    href="#blog"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
+                  </a>
+                  <a href="#blog" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     Blog
-                  </Link>
-                    <Link
-                    href="/component/ESocialresponsibity"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
+                  </a>
+                  <a href="/component/ESocialresponsibity" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     ESW
-                  </Link>
+                  </a>
                 </div>
               </div>
-              <Link href="/component/Contact" className="group relative flex items-center">
-              <img
-      src="/Footerimg/smalllogo.png"
-      alt="icon"
-      className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-    />
-      <span className="ml-5 hover:text-blue-500 text-sm"> Contact</span>
-               
-              </Link>
+
+              <a href="/component/Contact" className="group relative flex items-center">
+                <img
+                  src="/api/placeholder/16/16"
+                  alt="icon"
+                  className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                />
+                <span className="ml-5 hover:text-blue-500 text-sm">Contact</span>
+              </a>
             </div>
 
             {/* Mobile Menu Button */}
@@ -300,71 +644,34 @@ export default function Navbar() {
         {/* Mobile Menu */}
         {menuOpen && (
           <div className="md:hidden bg-white px-4 pb-4">
-            <Link href="/component/pathHome" className="block py-2"  onClick={handleLinkClick}>
-              Home
-            </Link>
-            <Link href="/component/PathGroup" className="block py-2"  onClick={handleLinkClick}>
-              Path Group
-            </Link>
-            <Link href="/component/MMLP" className="block py-2"  onClick={handleLinkClick}>
-              MMLP
-            </Link>
-            <Link href="/component/About" className="block py-2"  onClick={handleLinkClick}>
-              About Us
-            </Link>
-            <Link href="/component/Solution" className="block py-2"  onClick={handleLinkClick}>
-              Solution (Facility)
-            </Link>
-             <Link href="/component/Sustainability" className="block py-2"  onClick={handleLinkClick}>
-              Sustainability
-            </Link>
-            <Link href="#" className="block py-2"  onClick={handleLinkClick}>
-             What's New
-            </Link>
-            <Link href="/component/Contact" className="block py-2"  onClick={handleLinkClick}>
-              Contact
-            </Link>
-             <Link href="/component/ESocialresponsibity" className="block py-2"  onClick={handleLinkClick}>
-             ESW
-            </Link>
-           
+            <a href="/component/pathHome" className="block py-2" onClick={handleLinkClick}>Home</a>
+            <a href="/component/PathGroup" className="block py-2" onClick={handleLinkClick}>Path Group</a>
+            <a href="/component/MMLP" className="block py-2" onClick={handleLinkClick}>MMLP</a>
+            <a href="/component/About" className="block py-2" onClick={handleLinkClick}>About Us</a>
+            <a href="/component/Solution" className="block py-2" onClick={handleLinkClick}>Solution (Facility)</a>
+            <a href="/component/Sustainability" className="block py-2" onClick={handleLinkClick}>Sustainability</a>
+            <a href="#" className="block py-2" onClick={handleLinkClick}>What's New</a>
+            <a href="/component/Contact" className="block py-2" onClick={handleLinkClick}>Contact</a>
+            <a href="/component/ESocialresponsibity" className="block py-2" onClick={handleLinkClick}>ESW</a>
 
-<div className="flex items-center w-full -mt-6">
-  {/* Left line */}
-  <div className="flex-1 h-[2px] bg-gray-300"></div>
+            <div className="flex items-center w-full -mt-6">
+              <div className="flex-1 h-[2px] bg-gray-300"></div>
+              <div className="mx-6">
+                <img src="/api/placeholder/80/80" alt="Company Logo" className="h-20 w-20 object-contain" />
+              </div>
+              <div className="flex-1 h-[2px] bg-gray-300"></div>
+            </div>
 
-  {/* Center logo */}
-  <div className="mx-6">
-    <img
-      src="/CompanyLogo/companylogo.png"
-      alt="Company Logo"
-      className="h-20 w-20 object-contain"
-    />
-  </div>
-
-  {/* Right line */}
-  <div className="flex-1 h-[2px] bg-gray-300"></div>
-</div>
-
-
-
-<Link
-  href="/component/Login"
-  onClick={handleLinkClick}
-  className="flex items-center gap-2 -mt-5 text-blue-500"
->
-  Login
-  <CiLogin className="text-red-500 text-xl" />
-</Link>
-
+            <a href="/component/Login" onClick={handleLinkClick} className="flex items-center gap-2 -mt-5 text-blue-500">
+              Login
+              <CiLogin className="text-red-500 text-xl" />
+            </a>
           </div>
         )}
       </nav>
     </div>
   );
 }
-
-
 
 // "use client";
 // import React, { useEffect, useState, useRef } from 'react';
