@@ -6,6 +6,7 @@ import ScrollToTop from "./component/Bottomtotopscroll/page";
 import EnquireButton from "./component/Enquirebtn/page";
 import WhatsAppButton from "./component/whataappbtn/page";
 import LocationToggle from "./component/locationtoggle/page";
+import ShareButton from "./component/Sharebtn/page";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Navbar/>
+        <ShareButton/>
         {children}
         <Footer/>
         <WhatsAppButton/>

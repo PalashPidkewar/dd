@@ -539,7 +539,7 @@ export default function Navbar() {
             <div className="flex-shrink-0">
             <Link href="/component/pathHome">
     <Image
-      src="/CompanyLogo/companylogo.png"
+      src="/CompanyLogo/logisticlogo.png"
       alt="Company Logo"
       width={180}
       height={48}
@@ -552,7 +552,7 @@ export default function Navbar() {
             <div className="hidden md:flex space-x-4 items-center">
               <a href="/component/pathHome" className="group relative flex items-center">
                 <img
-                  src="/api/placeholder/16/16"
+                  src="/CompanyLogo/smalllogo.png"
                   alt="icon"
                   className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                 />
@@ -560,7 +560,7 @@ export default function Navbar() {
               </a>
               <a href="/component/About" className="group relative flex items-center">
                 <img
-                  src="/api/placeholder/16/16"
+                  src="/CompanyLogo/smalllogo.png"
                   alt="icon"
                   className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                 />
@@ -568,7 +568,7 @@ export default function Navbar() {
               </a>
               <a href="/component/PathGroup" className="group relative flex items-center">
                 <img
-                  src="/api/placeholder/16/16"
+                  src="/CompanyLogo/smalllogo.png"
                   alt="icon"
                   className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                 />
@@ -576,7 +576,7 @@ export default function Navbar() {
               </a>
               <a href="/component/MMLP" className="group relative flex items-center">
                 <img
-                  src="/api/placeholder/16/16"
+                  src="/CompanyLogo/smalllogo.png"
                   alt="icon"
                   className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                 />
@@ -584,7 +584,7 @@ export default function Navbar() {
               </a>
               <a href="/component/Solution" className="group relative flex items-center">
                 <img
-                  src="/api/placeholder/16/16"
+                  src="/CompanyLogo/smalllogo.png"
                   alt="icon"
                   className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                 />
@@ -592,7 +592,7 @@ export default function Navbar() {
               </a>
               <a href="/component/Sustainability" className="group relative flex items-center">
                 <img
-                  src="/api/placeholder/16/16"
+                  src="/CompanyLogo/smalllogo.png"
                   alt="icon"
                   className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                 />
@@ -602,7 +602,7 @@ export default function Navbar() {
               {/* What's New Dropdown */}
               <div className="relative group">
                 <img
-                  src="/api/placeholder/16/16"
+                  src="/CompanyLogo/smalllogo.png"
                   alt="icon"
                   className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                 />
@@ -624,7 +624,7 @@ export default function Navbar() {
 
               <a href="/component/Contact" className="group relative flex items-center">
                 <img
-                  src="/api/placeholder/16/16"
+                  src="/CompanyLogo/smalllogo.png"
                   alt="icon"
                   className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                 />
@@ -633,7 +633,28 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Menu Button */}
-            <div className="md:hidden flex items-center">
+            <div className="md:hidden flex items-center gap-2">
+                <div className="flex-shrink-0">
+               <div className="text-center leading-[1.1]">
+
+  {/* PATH */}
+  <h1 className=" text-gray-500">
+    PATH
+  </h1>
+
+  {/* GROUP */}
+  <h1 className="  text-gray-500">
+    GROUP
+  </h1>
+
+</div>
+            </div>
+            
+            {/* 2. Vertical Line (Divider) और Text */}
+            <div className="flex items-center space-x-1">
+              <span className="h-6 border-r border-gray-400"></span> {/* Vertical Divider */}
+             
+            </div>
               <button onClick={() => setMenuOpen(!menuOpen)}>
                 {menuOpen ? <FaTimes size={24} /> : <HiBars3CenterLeft size={24} />}
               </button>
@@ -657,7 +678,7 @@ export default function Navbar() {
             <div className="flex items-center w-full -mt-6">
               <div className="flex-1 h-[2px] bg-gray-300"></div>
               <div className="mx-6">
-                <img src="/api/placeholder/80/80" alt="Company Logo" className="h-20 w-20 object-contain" />
+                <img src="/CompanyLogo/logisticlogo.png" alt="Company Logo" className="h-20 w-20 object-contain" />
               </div>
               <div className="flex-1 h-[2px] bg-gray-300"></div>
             </div>
