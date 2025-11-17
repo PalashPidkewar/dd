@@ -17,7 +17,7 @@ const GradientUnderline = () => {
       <div className="flex w-full items-center justify-between relative z-10">
         {/* Left Small Logo */}
         <Image
-          src="/CompanyLogo/smalllogo.webp"
+          src="/CompanyLogo/smalllogo.png"
           alt="Left Logo"
           width={30}
           height={30}
@@ -84,7 +84,7 @@ const GradientUnderline = () => {
 
         {/* Right Small Logo */}
         <Image
-          src="/CompanyLogo/smalllogo.webp"
+          src="/CompanyLogo/smalllogo.png"
           alt="Right Logo"
           width={30}
           height={30}
