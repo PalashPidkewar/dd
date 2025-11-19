@@ -547,7 +547,7 @@ export default function Navbar() {
             <div className="flex-shrink-0">
               <Link href="/component/pathHome">
                 <Image
-                  src="/CompanyLogo/companylogo.png"
+                  src="/CompanyLogo/a.jpg"
                   alt="Company Logo"
                   width={180}
                   height={48}
