@@ -433,7 +433,7 @@ export default function SolutionHome() {
         
         <div className="flex items-center justify-center text-center space-x-3">
   <Image
-    src="/CompanyLogo/smalllogo.webp"
+    src="/CompanyLogo/smalllogo.png"
     alt="Company Logo"
     width={40}
     height={40}
@@ -479,7 +479,7 @@ Integrated Facility Solutions
       <div className="pt-10 pb-20 px-4 md:px-16 bg-gray-50">
         <div className="flex items-center justify-center text-center space-x-3">
   <Image
-    src="/CompanyLogo/smalllogo.webp"
+    src="/CompanyLogo/smalllogo.png"
     alt="Company Logo"
     width={40}
     height={40}

@@ -363,14 +363,16 @@
 //     </div>
 //   );
 // }
-
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { HiBars3CenterLeft } from "react-icons/hi2";
 import { CiLogin } from "react-icons/ci";
 import {
   FaInstagram,
+  FaBars,
   FaTimes,
   FaPhoneAlt,
   FaFacebook,
@@ -380,11 +382,11 @@ import {
 } from "react-icons/fa";
 import { MdOutlineWarehouse } from "react-icons/md";
 import { RiHotelLine } from "react-icons/ri";
-import { GiCrystalBars, GiDeliveryDrone } from "react-icons/gi";
+import { GiCrystalBars } from "react-icons/gi";
 import { SiInteractiondesignfoundation } from "react-icons/si";
 import { TbGridDots } from "react-icons/tb";
-import Link from "next/link";
-import Image from "next/image";
+import { GiDeliveryDrone } from "react-icons/gi";
+
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showTopBar, setShowTopBar] = useState(true);
@@ -410,55 +412,59 @@ export default function Navbar() {
   };
 
   return (
-    <div className="sticky top-0 z-50">
-      {/* Top Social Bar - Fixed height container */}
-      <div 
-        className="bg-gray-100 w-full overflow-hidden transition-all duration-300"
-        style={{ height: showTopBar ? '40px' : '0px' }}
+    <div className="fixed top-0 left-0 right-0 z-50">
+      {/* Top Social Bar - Fixed height to prevent jumping */}
+      <div
+        className={`bg-gray-100 w-full transition-all duration-300 overflow-hidden ${
+          showTopBar ? "h-10" : "h-0"
+        }`}
       >
-        <div className="h-10 px-4 flex items-center text-gray-600 text-sm md:text-base">
+        <div className="h-10 px-4 flex items-center justify-between text-gray-600 text-sm">
           {/* Left - Company Name */}
-          <div className="hidden sm:block text-base font-medium whitespace-nowrap">
+          <div className="hidden sm:block text-sm font-medium whitespace-nowrap flex-shrink-0">
             Prakash Asphaltings and Toll Highways (INDIA) Ltd.
           </div>
 
           {/* Center - Contact Info */}
-          <div className="flex items-center gap-4 font-medium whitespace-nowrap sm:justify-center justify-start w-full">
-            <span className="flex items-center gap-1 text-sm sm:text-base">
-              <FaPhoneAlt className="text-green-500" /> +91-7324-350100
+          <div className="flex items-center gap-4 font-medium whitespace-nowrap">
+            <span className="flex items-center gap-1 text-xs sm:text-sm">
+              <FaPhoneAlt className="text-green-500 flex-shrink-0" size={12} />
+              <span className="hidden xs:inline">+91-7324-350100</span>
             </span>
             <span className="hidden sm:inline">|</span>
-            <span className="hidden sm:flex items-center gap-1 text-sm sm:text-base">
-              <FaEnvelope className="text-yellow-400" /> info@pathindia.com
+            <span className="hidden sm:flex items-center gap-1 text-xs sm:text-sm">
+              <FaEnvelope className="text-yellow-400 flex-shrink-0" size={12} />
+              info@pathindia.com
             </span>
           </div>
 
           {/* Right - Social Icons + Dropdown */}
-          <div className="flex items-center space-x-3 sm:space-x-4">
+          <div className="flex items-center gap-3 flex-shrink-0">
             <a
               href="https://www.linkedin.com/company/path-india-ltd-/?originalSubdomain=in"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-700 hover:animate-bounce transition"
+              className="text-blue-700 hover:scale-110 transition-transform"
             >
-              <FaLinkedin size={15} />
+              <FaLinkedin size={14} />
             </a>
             <a
               href="https://www.instagram.com/path_india/?hl=en"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-pink-600 hover:animate-bounce transition"
+              className="text-pink-600 hover:scale-110 transition-transform"
             >
-              <FaInstagram size={15} />
+              <FaInstagram size={14} />
             </a>
             <a
               href="https://www.facebook.com/pathltd/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:animate-bounce transition"
+              className="text-blue-600 hover:scale-110 transition-transform"
             >
-              <FaFacebook size={15} />
+              <FaFacebook size={14} />
             </a>
+ <div className="w-px h-4 bg-gray-500"></div>
 
             {/* Dropdown */}
             <div
@@ -468,10 +474,10 @@ export default function Navbar() {
               onMouseLeave={() => setIsDropdownOpen(false)}
             >
               <button
-                className="text-gray-700 hover:text-black transition focus:outline-none mt-1"
+                className="text-gray-700 hover:text-black transition focus:outline-none"
                 onClick={() => setIsDropdownOpen((prev) => !prev)}
               >
-                <TbGridDots size={15} />
+                <TbGridDots size={16} />
               </button>
 
               {isDropdownOpen && (
@@ -506,12 +512,14 @@ export default function Navbar() {
                       {
                         name: "Path Dynamics",
                         link: "#",
-                        icon: <GiDeliveryDrone className="inline mr-2 text-green-500" />
+                        icon: <GiDeliveryDrone className="inline mr-2 text-green-500" />,
                       },
                       {
                         name: "Path Foundation",
                         link: "#",
-                        icon: <SiInteractiondesignfoundation className="inline mr-2 text-indigo-500" />
+                        icon: (
+                          <SiInteractiondesignfoundation className="inline mr-2 text-indigo-500" />
+                        ),
                       },
                     ].map((item) => (
                       <li key={item.name}>
@@ -531,130 +539,114 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Main Navbar */}
-      <nav className="bg-white shadow-md">
-        <div className="mx-auto px-4">
-          <div className="flex justify-between items-center h-14">
+      {/* Main Navbar - Fixed height */}
+      <nav className="bg-white shadow-md h-14">
+        <div className="mx-auto px-4 h-full">
+          <div className="flex justify-between items-center h-full">
             {/* Logo */}
             <div className="flex-shrink-0">
-            <Link href="/component/pathHome">
-    <Image
-      src="/CompanyLogo/logisticlogo.png"
-      alt="Company Logo"
-      width={180}
-      height={48}
-      className="w-auto h-12 object-contain"
-    />
-     </Link>
+              <Link href="/component/pathHome">
+                <Image
+                  src="/CompanyLogo/companylogo.png"
+                  alt="Company Logo"
+                  width={180}
+                  height={48}
+                  className="w-auto h-12 object-contain"
+                />
+              </Link>
             </div>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex space-x-4 items-center">
-              <a href="/component/pathHome" className="group relative flex items-center">
+            <div className="hidden md:flex items-center gap-1 lg:gap-2">
+              <Link href="/component/pathHome" className="group relative flex items-center px-2 py-2">
                 <img
-                  src="/CompanyLogo/smalllogo.png"
+                  src="/Footerimg/smalllogo.png"
                   alt="icon"
-                  className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  className="absolute left-0 w-3 h-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                 />
-                <span className="ml-5 hover:text-blue-500 text-sm">Home</span>
-              </a>
-              <a href="/component/About" className="group relative flex items-center">
+                <span className="ml-4 hover:text-blue-500 text-sm whitespace-nowrap">Home</span>
+              </Link>
+
+              <Link href="/component/About" className="group relative flex items-center px-2 py-2">
                 <img
-                  src="/CompanyLogo/smalllogo.png"
+                  src="/Footerimg/smalllogo.png"
                   alt="icon"
-                  className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  className="absolute left-0 w-3 h-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                 />
-                <span className="ml-5 hover:text-blue-500 text-sm">About Us</span>
-              </a>
-              <a href="/component/PathGroup" className="group relative flex items-center">
+                <span className="ml-4 hover:text-blue-500 text-sm whitespace-nowrap">About Us</span>
+              </Link>
+
+              <Link href="/component/PathGroup" className="group relative flex items-center px-2 py-2">
                 <img
-                  src="/CompanyLogo/smalllogo.png"
+                  src="/Footerimg/smalllogo.png"
                   alt="icon"
-                  className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  className="absolute left-0 w-3 h-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                 />
-                <span className="ml-5 hover:text-blue-500 text-sm">Path Group</span>
-              </a>
-              <a href="/component/MMLP" className="group relative flex items-center">
+                <span className="ml-4 hover:text-blue-500 text-sm whitespace-nowrap">Path Group</span>
+              </Link>
+
+              <Link href="/component/MMLP" className="group relative flex items-center px-2 py-2">
                 <img
-                  src="/CompanyLogo/smalllogo.png"
+                  src="/Footerimg/smalllogo.png"
                   alt="icon"
-                  className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  className="absolute left-0 w-3 h-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                 />
-                <span className="ml-5 hover:text-blue-500 text-sm">MMLP</span>
-              </a>
-              <a href="/component/Solution" className="group relative flex items-center">
+                <span className="ml-4 hover:text-blue-500 text-sm whitespace-nowrap">MMLP</span>
+              </Link>
+
+              <Link href="/component/Solution" className="group relative flex items-center px-2 py-2">
                 <img
-                  src="/CompanyLogo/smalllogo.png"
+                  src="/Footerimg/smalllogo.png"
                   alt="icon"
-                  className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  className="absolute left-0 w-3 h-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                 />
-                <span className="ml-5 hover:text-blue-500 text-sm">Solution (Facility)</span>
-              </a>
-              <a href="/component/Sustainability" className="group relative flex items-center">
+                <span className="ml-4 hover:text-blue-500 text-sm whitespace-nowrap">Solution (Facility)</span>
+              </Link>
+
+              <Link href="/component/Sustainability" className="group relative flex items-center px-2 py-2">
                 <img
-                  src="/CompanyLogo/smalllogo.png"
+                  src="/Footerimg/smalllogo.png"
                   alt="icon"
-                  className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  className="absolute left-0 w-3 h-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                 />
-                <span className="ml-5 hover:text-blue-500 text-sm">Sustainability</span>
-              </a>
+                <span className="ml-4 hover:text-blue-500 text-sm whitespace-nowrap">Sustainability</span>
+              </Link>
 
               {/* What's New Dropdown */}
-              <div className="relative group">
-                <img
-                  src="/CompanyLogo/smalllogo.png"
-                  alt="icon"
-                  className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                />
-                <button className="ml-5 text-sm hover:text-blue-500 flex items-center focus:outline-none">
-                  What's New ▼
+              <div className="relative group px-2 py-2">
+                <button className="flex items-center text-sm hover:text-blue-500 focus:outline-none whitespace-nowrap">
+                  <img
+                    src="/Footerimg/smalllogo.png"
+                    alt="icon"
+                    className="absolute left-0 w-3 h-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  />
+                  <span className="ml-4">What's New ▼</span>
                 </button>
                 <div className="absolute left-0 mt-1 w-32 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-all duration-300 z-50">
-                  <a href="#update" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <Link href="#update" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     Update
-                  </a>
-                  <a href="#blog" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  </Link>
+                  <Link href="#blog" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     Blog
-                  </a>
-                  <a href="/component/ESocialresponsibity" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  </Link>
+                  <Link href="/component/ESocialresponsibity" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     ESW
-                  </a>
+                  </Link>
                 </div>
               </div>
 
-              <a href="/component/Contact" className="group relative flex items-center">
+              <Link href="/component/Contact" className="group relative flex items-center px-2 py-2">
                 <img
-                  src="/CompanyLogo/smalllogo.png"
+                  src="/Footerimg/smalllogo.png"
                   alt="icon"
-                  className="absolute left-0 w-4 h-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  className="absolute left-0 w-3 h-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                 />
-                <span className="ml-5 hover:text-blue-500 text-sm">Contact</span>
-              </a>
+                <span className="ml-4 hover:text-blue-500 text-sm whitespace-nowrap">Contact</span>
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
-            <div className="md:hidden flex items-center gap-2">
-                <div className="flex-shrink-0">
-               <div className="text-center leading-[1.1]">
-
-  {/* PATH */}
-  <h1 className=" text-gray-500">
-    PATH
-  </h1>
-
-  {/* GROUP */}
-  <h1 className="  text-gray-500">
-    GROUP
-  </h1>
-
-</div>
-            </div>
-            
-            {/* 2. Vertical Line (Divider) और Text */}
-            <div className="flex items-center space-x-1">
-              <span className="h-6 border-r border-gray-400"></span> {/* Vertical Divider */}
-             
-            </div>
+            <div className="md:hidden flex items-center">
               <button onClick={() => setMenuOpen(!menuOpen)}>
                 {menuOpen ? <FaTimes size={24} /> : <HiBars3CenterLeft size={24} />}
               </button>
@@ -664,29 +656,55 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         {menuOpen && (
-          <div className="md:hidden bg-white px-4 pb-4">
-            <a href="/component/pathHome" className="block py-2" onClick={handleLinkClick}>Home</a>
-            <a href="/component/PathGroup" className="block py-2" onClick={handleLinkClick}>Path Group</a>
-            <a href="/component/MMLP" className="block py-2" onClick={handleLinkClick}>MMLP</a>
-            <a href="/component/About" className="block py-2" onClick={handleLinkClick}>About Us</a>
-            <a href="/component/Solution" className="block py-2" onClick={handleLinkClick}>Solution (Facility)</a>
-            <a href="/component/Sustainability" className="block py-2" onClick={handleLinkClick}>Sustainability</a>
-            <a href="#" className="block py-2" onClick={handleLinkClick}>What's New</a>
-            <a href="/component/Contact" className="block py-2" onClick={handleLinkClick}>Contact</a>
-            <a href="/component/ESocialresponsibity" className="block py-2" onClick={handleLinkClick}>ESW</a>
+          <div className="md:hidden bg-white px-4 pb-4 border-t border-gray-200">
+            <Link href="/component/pathHome" className="block py-2 text-gray-700 hover:text-blue-500" onClick={handleLinkClick}>
+              Home
+            </Link>
+            <Link href="/component/PathGroup" className="block py-2 text-gray-700 hover:text-blue-500" onClick={handleLinkClick}>
+              Path Group
+            </Link>
+            <Link href="/component/MMLP" className="block py-2 text-gray-700 hover:text-blue-500" onClick={handleLinkClick}>
+              MMLP
+            </Link>
+            <Link href="/component/About" className="block py-2 text-gray-700 hover:text-blue-500" onClick={handleLinkClick}>
+              About Us
+            </Link>
+            <Link href="/component/Solution" className="block py-2 text-gray-700 hover:text-blue-500" onClick={handleLinkClick}>
+              Solution (Facility)
+            </Link>
+            <Link href="/component/Sustainability" className="block py-2 text-gray-700 hover:text-blue-500" onClick={handleLinkClick}>
+              Sustainability
+            </Link>
+            <Link href="#" className="block py-2 text-gray-700 hover:text-blue-500" onClick={handleLinkClick}>
+              What's New
+            </Link>
+            <Link href="/component/Contact" className="block py-2 text-gray-700 hover:text-blue-500" onClick={handleLinkClick}>
+              Contact
+            </Link>
+            <Link href="/component/ESocialresponsibity" className="block py-2 text-gray-700 hover:text-blue-500" onClick={handleLinkClick}>
+              ESW
+            </Link>
 
-            <div className="flex items-center w-full -mt-6">
-              <div className="flex-1 h-[2px] bg-gray-300"></div>
-              <div className="mx-6">
-                <img src="/CompanyLogo/logisticlogo.png" alt="Company Logo" className="h-20 w-20 object-contain" />
+            <div className="flex items-center w-full my-4">
+              <div className="flex-1 h-[1px] bg-gray-300"></div>
+              <div className="mx-4">
+                <img
+                  src="/CompanyLogo/companylogo.png"
+                  alt="Company Logo"
+                  className="h-16 w-16 object-contain"
+                />
               </div>
-              <div className="flex-1 h-[2px] bg-gray-300"></div>
+              <div className="flex-1 h-[1px] bg-gray-300"></div>
             </div>
 
-            <a href="/component/Login" onClick={handleLinkClick} className="flex items-center gap-2 -mt-5 text-blue-500">
+            <Link
+              href="/component/Login"
+              onClick={handleLinkClick}
+              className="flex items-center gap-2 py-2 text-blue-500 hover:text-blue-600"
+            >
               Login
               <CiLogin className="text-red-500 text-xl" />
-            </a>
+            </Link>
           </div>
         )}
       </nav>

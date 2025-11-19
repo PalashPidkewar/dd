@@ -83,7 +83,7 @@ export default function SustainabilitySection() {
       {/* Section 2 - Green Line & Title */}
       <div className="flex items-center justify-center mt-12 px-4 text-center space-x-3">
         <Image
-          src="/CompanyLogo/smalllogo.webp"
+          src="/CompanyLogo/smalllogo.png"
           alt="Company Logo"
           width={40}
           height={40}
